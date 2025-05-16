@@ -1,19 +1,751 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kost Putri Amanah Exclusive - UB Merjosari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .facility-icon {
+            transition: all 0.3s ease;
+        }
+        .facility-icon:hover {
+            transform: scale(1.1);
+        }
+        .active-tab {
+            border-bottom: 3px solid #6366f1;
+            color: #6366f1;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-home text-indigo-600 text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold text-indigo-600">Kost Putri Amanah Exclusive</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-800 hover:text-indigo-600 font-medium active-tab">Beranda</a>
+                <a href="#rooms" class="text-gray-800 hover:text-indigo-600 font-medium">Kamar</a>
+                <a href="#facilities" class="text-gray-800 hover:text-indigo-600 font-medium">Fasilitas</a>
+                <a href="#location" class="text-gray-800 hover:text-indigo-600 font-medium">Lokasi</a>
+                <a href="#contact" class="text-gray-800 hover:text-indigo-600 font-medium">Kontak</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button onclick="openLoginModal()" class="hidden md:block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">Login</button>
+                <button class="md:hidden text-gray-800" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
+            <div class="px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-800 hover:text-indigo-600 font-medium">Beranda</a>
+                <a href="#rooms" class="text-gray-800 hover:text-indigo-600 font-medium">Kamar</a>
+                <a href="#facilities" class="text-gray-800 hover:text-indigo-600 font-medium">Fasilitas</a>
+                <a href="#location" class="text-gray-800 hover:text-indigo-600 font-medium">Lokasi</a>
+                <a href="#contact" class="text-gray-800 hover:text-indigo-600 font-medium">Kontak</a>
+                <button onclick="openLoginModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition w-full">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero h-96 flex items-center justify-center text-white">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Kost Putri Amanah Exclusive</h1>
+            <p class="text-xl mb-8">Tempat tinggal nyaman dan aman untuk mahasiswi UB di Merjosari</p>
+            <a href="#booking" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition">Booking Sekarang</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Tentang Kost Kami</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kost Putri Amanah" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Kenyamanan dan Keamanan Putri Prioritas Kami</h3>
+                    <p class="text-gray-600 mb-4">Kost Putri Amanah Exclusive menyediakan akomodasi nyaman dan aman khusus untuk mahasiswi Universitas Brawijaya di kawasan Merjosari. Dengan lokasi strategis dekat kampus, kami menawarkan lingkungan yang kondusif untuk belajar dan beristirahat.</p>
+                    <p class="text-gray-600 mb-6">Kami berkomitmen untuk memberikan pelayanan terbaik dengan fasilitas lengkap dan harga terjangkau. Kost kami dikelola secara profesional dengan standar kebersihan dan keamanan tinggi.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center bg-indigo-50 px-4 py-2 rounded-full">
+                            <i class="fas fa-lock text-indigo-600 mr-2"></i>
+                            <span class="text-gray-700">24/7 Keamanan</span>
+                        </div>
+                        <div class="flex items-center bg-indigo-50 px-4 py-2 rounded-full">
+                            <i class="fas fa-wifi text-indigo-600 mr-2"></i>
+                            <span class="text-gray-700">WiFi Cepat</span>
+                        </div>
+                        <div class="flex items-center bg-indigo-50 px-4 py-2 rounded-full">
+                            <i class="fas fa-utensils text-indigo-600 mr-2"></i>
+                            <span class="text-gray-700">Dapur Bersama</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Pilihan Kamar</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai tipe kamar dengan fasilitas lengkap untuk memenuhi kebutuhan Anda</p>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Room 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md room-card transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kamar Standard" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kamar Standard</h3>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-600 ml-2 text-sm">4.5 (32 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Kamar nyaman dengan tempat tidur single, lemari pakaian, dan meja belajar.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">AC</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">WiFi</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Kamar Mandi Dalam</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-indigo-600">Rp 1.200.000<span class="text-sm font-normal text-gray-500">/bulan</span></span>
+                            <button onclick="openBookingModal('Kamar Standard')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition">Pesan</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md room-card transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kamar Deluxe" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kamar Deluxe</h3>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-2 text-sm">5.0 (24 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Kamar lebih luas dengan tempat tidur queen size, lemari besar, meja belajar, dan kursi santai.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">AC</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">WiFi</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Kamar Mandi Dalam</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">TV</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-indigo-600">Rp 1.800.000<span class="text-sm font-normal text-gray-500">/bulan</span></span>
+                            <button onclick="openBookingModal('Kamar Deluxe')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition">Pesan</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md room-card transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Kamar Executive" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kamar Executive</h3>
+                        <div class="flex items-center text-yellow-500 mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-2 text-sm">5.0 (18 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Kamar premium dengan tempat tidur king size, lemari walk-in, meja kerja ergonomis, dan ruang santai pribadi.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">AC</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">WiFi</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Kamar Mandi Dalam</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">TV</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Kulkas Mini</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-indigo-600">Rp 2.500.000<span class="text-sm font-normal text-gray-500">/bulan</span></span>
+                            <button onclick="openBookingModal('Kamar Executive')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition">Pesan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#rooms" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center justify-center">
+                    Lihat Semua Kamar <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Fasilitas Unggulan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Nikmati berbagai fasilitas lengkap untuk mendukung aktivitas harian Anda</p>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-gray-50 rounded-lg facility-icon">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Keamanan 24/7</h3>
+                    <p class="text-gray-600 text-sm">Satpam dan CCTV 24 jam untuk keamanan penghuni</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg facility-icon">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-wifi text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">WiFi Cepat</h3>
+                    <p class="text-gray-600 text-sm">Internet cepat unlimited untuk belajar dan hiburan</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg facility-icon">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-utensils text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Dapur Bersama</h3>
+                    <p class="text-gray-600 text-sm">Dapur lengkap dengan peralatan masak dan makan</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg facility-icon">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tint text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Air Bersih</h3>
+                    <p class="text-gray-600 text-sm">Air bersih dan panas tersedia 24 jam</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg facility-icon">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-parking text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Parkir Motor</h3>
+                    <p class="text-gray-600 text-sm">Area parkir motor yang luas dan aman</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg facility-icon">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-broom text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Kebersihan</h3>
+                    <p class="text-gray-600 text-sm">Petugas kebersihan harian untuk area umum</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg facility-icon">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-water text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Laundry</h3>
+                    <p class="text-gray-600 text-sm">Layanan laundry dengan harga khusus penghuni</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-lg facility-icon">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-first-aid text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Klinik</h3>
+                    <p class="text-gray-600 text-sm">Kerjasama dengan klinik terdekat untuk layanan kesehatan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Apa Kata Penghuni Kami</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Testimonial" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Rina Wijaya</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Tinggal di Kost Amanah sudah 2 tahun, sangat nyaman dan aman. Lokasi strategis dekat kampus UB, fasilitas lengkap, dan pengelola sangat responsif."</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonial" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Siti Nurhaliza</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Lingkungannya sangat kondusif untuk belajar. WiFi cepat, kamar bersih, dan ada satpam 24 jam yang membuat orang tua saya tenang."</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Testimonial" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Dewi Lestari</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Saya baru pindah ke sini 3 bulan lalu dan langsung merasa nyaman. Teman-teman sekost ramah, ada dapur bersama yang lengkap, dan harga sangat terjangkau."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Lokasi Strategis</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kost kami berada di lokasi strategis dekat Universitas Brawijaya dan pusat kota Malang</p>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden h-96">
+                        <!-- Google Maps Embed -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.3141822078896!2d112.6082763152586!3d-7.966446794258785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7882865ded0697%3A0xa77fa961a7c4e4b7!2sUniversitas%20Brawijaya!5e0!3m2!1sen!2sid!4v1629876543210!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Akses Mudah Ke Berbagai Tempat</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-university text-indigo-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Universitas Brawijaya</h4>
+                                <p class="text-gray-600">Hanya 5 menit berkendara atau 15 menit jalan kaki</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-store text-indigo-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Pasar Merjosari</h4>
+                                <p class="text-gray-600">3 menit berkendara untuk kebutuhan sehari-hari</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-bus text-indigo-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Terminal Arjosari</h4>
+                                <p class="text-gray-600">10 menit berkendara untuk transportasi keluar kota</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-hospital text-indigo-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium text-gray-800">RSUD Saiful Anwar</h4>
+                                <p class="text-gray-600">15 menit berkendara untuk layanan kesehatan</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-shopping-bag text-indigo-600 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Malang Town Square</h4>
+                                <p class="text-gray-600">20 menit berkendara untuk pusat perbelanjaan</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-16 bg-indigo-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Booking Kamar Sekarang</h2>
+                <p class="max-w-2xl mx-auto">Isi form berikut untuk memesan kamar atau konsultasi dengan admin kami</p>
+                <div class="w-24 h-1 bg-white mx-auto"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-indigo-700 p-8 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold mb-4">Informasi Booking</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Konfirmasi booking via WhatsApp dalam 1x24 jam</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Pembayaran pertama setelah konfirmasi booking</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Kamar bisa ditempati setelah pembayaran diterima</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Masa tenggang pembayaran maksimal 3 hari</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-2">Butuh Bantuan?</h4>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt mr-3"></i>
+                                <span>+62 812-3456-7890</span>
+                            </div>
+                            <div class="flex items-center mt-2">
+                                <i class="fas fa-envelope mr-3"></i>
+                                <span>admin@kostamanah.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 text-gray-800">
+                        <form id="bookingForm">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Nomor WhatsApp</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="roomType" class="block text-gray-700 font-medium mb-2">Tipe Kamar</label>
+                                <select id="roomType" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                                    <option value="">Pilih Tipe Kamar</option>
+                                    <option value="Kamar Standard">Kamar Standard - Rp 1.200.000/bulan</option>
+                                    <option value="Kamar Deluxe">Kamar Deluxe - Rp 1.800.000/bulan</option>
+                                    <option value="Kamar Executive">Kamar Executive - Rp 2.500.000/bulan</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="moveDate" class="block text-gray-700 font-medium mb-2">Tanggal Masuk</label>
+                                <input type="date" id="moveDate" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Pesan Tambahan</label>
+                                <textarea id="message" rows="3" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 transition font-medium">Kirim Booking Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami siap membantu Anda dengan segala pertanyaan tentang Kost Putri Amanah Exclusive</p>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Informasi Kontak</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Alamat</h4>
+                                <p class="text-gray-600">Jl. Merjosari No. 123, Lowokwaru, Malang, Jawa Timur</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Telepon</h4>
+                                <p class="text-gray-600">+62 812-3456-7890 (Admin)</p>
+                                <p class="text-gray-600">+62 823-4567-8901 (Penjaga Kost)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Email</h4>
+                                <p class="text-gray-600">admin@kostamanah.com</p>
+                                <p class="text-gray-600">booking@kostamanah.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Jam Operasional</h4>
+                                <p class="text-gray-600">Senin - Minggu: 08.00 - 20.00 WIB</p>
+                                <p class="text-gray-600">Kunjungan bisa diluar jam operasional dengan janji temu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Kirim Pesan Langsung</h3>
+                    <form id="contactForm">
+                        <div class="mb-4">
+                            <label for="contactName" class="block text-gray-700 font-medium mb-2">Nama Anda</label>
+                            <input type="text" id="contactName" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contactEmail" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="contactEmail" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contactPhone" class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
+                            <input type="tel" id="contactPhone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contactSubject" class="block text-gray-700 font-medium mb-2">Subjek</label>
+                            <input type="text" id="contactSubject" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="contactMessage" class="block text-gray-700 font-medium mb-2">Pesan</label>
+                            <textarea id="contactMessage" rows="3" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 transition font-medium">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/6281234567890" target="_blank" class="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-home mr-2"></i> Kost Putri Amanah
+                    </h3>
+                    <p class="text-gray-400">Tempat tinggal nyaman dan aman khusus untuk mahasiswi Universitas Brawijaya di kawasan Merjosari, Malang.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Beranda</a></li>
+                        <li><a href="#rooms" class="text-gray-400 hover:text-white">Kamar</a></li>
+                        <li><a href="#facilities" class="text-gray-400 hover:text-white">Fasilitas</a></li>
+                        <li><a href="#location" class="text-gray-400 hover:text-white">Lokasi</a></li>
+                        <li><a href="#booking" class="text-gray-400 hover:text-white">Booking</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kamar Tersedia</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">Kamar Standard</li>
+                        <li class="text-gray-400">Kamar Deluxe</li>
+                        <li class="text-gray-400">Kamar Executive</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Dapatkan info promo dan kamar kosong terbaru</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email Anda" class="px-4 py-2 rounded-l-md focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-indigo-600 px-4 py-2 rounded-r-md hover:bg-indigo-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Kost Putri Amanah Exclusive - UB Merjosari. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold text-gray-800">Login Penghuni</h3>
+                    <button onclick="closeLoginModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label for="loginEmail" class="block text-gray-700 font-medium mb-1">Email</label>
+                        <input type="email" id="loginEmail" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                    </div>
+                    <div>
+                        <label for="loginPassword" class="block text-gray-700 font-medium mb-1">Password</label>
+                        <input type="password" id="loginPassword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="rememberMe" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="rememberMe" class="ml-2 block text-sm text-gray-700">Ingat saya</label>
+                        </div>
+                        <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800">Lupa password?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition font-medium">Login</button>
+                </form>
+                <div class="mt-4 text-center">
+                    <p class="text-gray-600">Belum punya akun? <a href="#" class="text-indigo-600 hover:text-indigo-800">Hubungi admin</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Success Modal -->
+    <div id="bookingSuccessModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 text-center">
+            <div class="text-green-500 text-5xl mb-4">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Booking Berhasil!</h3>
+            <p class="text-gray-600 mb-6">Terima kasih telah melakukan booking di Kost Putri Amanah Exclusive. Admin kami akan menghubungi Anda via WhatsApp dalam 1x24 jam.</p>
+            <button onclick="closeBookingSuccessModal()" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Login Modal Functions
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        // Booking Modal Functions
+        function openBookingModal(roomType) {
+            if (roomType) {
+                document.getElementById('roomType').value = roomType;
+            }
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function closeBookingSuccessModal() {
+            document.getElementById('bookingSuccessModal').classList.add('hidden');
+        }
+
+        // Form Submissions
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally send the data to your backend
+            // For demo purposes, we'll just show the success modal
+            document.getElementById('bookingSuccessModal').classList.remove('hidden');
+            this.reset();
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally send the login data to your backend
+            alert('Login functionality would be implemented here');
+            closeLoginModal();
+            this.reset();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally send the contact form data
+            alert('Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Althof12/kos-putri" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
